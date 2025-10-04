@@ -24,6 +24,9 @@ def main():
         print(
             f"  OPENAI_BASE_URL - OpenAI API base URL (default: https://api.openai.com/v1)"
         )
+        print(
+            f"  OPENAI_URL_OPTIONS - Querystring appended to OpenAI API requests"
+        )
         print(f"  BIG_MODEL - Model for opus requests (default: gpt-4o)")
         print(f"  MIDDLE_MODEL - Model for sonnet requests (default: gpt-4o)")
         print(f"  SMALL_MODEL - Model for haiku requests (default: gpt-4o-mini)")
@@ -43,6 +46,7 @@ def main():
     print("🚀 Claude-to-OpenAI API Proxy v1.0.0")
     print(f"✅ Configuration loaded successfully")
     print(f"   OpenAI Base URL: {config.openai_base_url}")
+    print(f"   OpenAI URL Options: {config.openai_url_options}")
     print(f"   Big Model (opus): {config.big_model}")
     print(f"   Middle Model (sonnet): {config.middle_model}")
     print(f"   Small Model (haiku): {config.small_model}")
@@ -54,7 +58,7 @@ def main():
 
     # Parse log level - extract just the first word to handle comments
     log_level = config.log_level.split()[0].lower()
-    
+
     # Validate and set default if invalid
     valid_levels = ['debug', 'info', 'warning', 'error', 'critical']
     if log_level not in valid_levels:
